@@ -5,7 +5,6 @@
 ### exemplo
 
 ```html
-<pre><code>
     <html lang="en">
 
     <head>
@@ -68,8 +67,6 @@
     </body>
 
     </html>
-</code>
-</pre>
 ```
 
 ----------
