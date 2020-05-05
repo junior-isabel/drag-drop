@@ -12,7 +12,7 @@
 .container .space{
     position: relative;
     display: flex;
-    flex-wrap: none;
+    flex-wrap: nowrap;
 }
 .drag {
     display: inline-block;

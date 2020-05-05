@@ -1,23 +1,34 @@
 
-function dragElement (selector, moveX, moveY) {
+function dragElement (selector, moveX, moveY, position) {
   let _moveX = moveX && true
   let _moveY = moveY && true 
   const container = document.querySelector(selector)
-  console.log()
   let space = null
+  let translateX = 0
   if(!container.children[0].classList.contains('space')) {
     space = container.children[0]
     space.classList.add('space')
   } else {
     space = container.children[0]
   }
+  if(container.getBoundingClientRect().width - space.scrollWidth - 1 > 0) {
+    space.style.display ="inline-flex"
+    switch(position) {
+      case 'center': 
+        translateX = (container.getBoundingClientRect().width - space.scrollWidth - 1) / 2
+        break
+      case 'right':
+        translateX = container.getBoundingClientRect().width - space.scrollWidth - 1
+        break
+        default:
+          translateX = 0
+    }
+  }
   //const drags = container.querySelectorAll('.drag')
   let px = 0, py = 0
   let start = false
-  let translateX = 0
   let translateY = 0
-  
-  
+  space.style.left = `${translateX}px`
   container.addEventListener('mousedown', clickPoint, false)
   
   container.addEventListener('mousemove', movimentEvent, false)
@@ -80,7 +91,9 @@ function dragElement (selector, moveX, moveY) {
   function constraint(dx, dy) {
     const spaceBox = space.getBoundingClientRect()
     const containerBox = container.getBoundingClientRect()
-    translateX = Math.min(0, translateX)
+    const x = containerBox.width - space.scrollWidth - 1
+    console.log(x)
+    translateX = Math.min(x > 0 ? x : 0, translateX)
     translateX = Math.max( - space.scrollWidth + spaceBox.width, translateX)
 
     translateY = Math.max(0, translateY)
