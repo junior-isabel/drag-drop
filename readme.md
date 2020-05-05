@@ -4,7 +4,7 @@
 
 ### exemplo
 
-`html
+```html
 <pre><code>
     <html lang="en">
 
@@ -70,7 +70,8 @@
     </html>
 </code>
 </pre>
-`
+```
+
 ----------
 
 # A funcção javascript recebe três paramatros dois deles opcionais
