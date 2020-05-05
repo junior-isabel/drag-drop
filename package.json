@@ -1,0 +1,20 @@
+{
+  "name": "drag-drop",
+  "version": "1.0.0",
+  "description": "drag-drop com javascript, html e css",
+  "main": "drag.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junior-isabel/drag-drop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junior-isabel/drag-drop/issues"
+  },
+  "homepage": "https://github.com/junior-isabel/drag-drop#readme"
+}
