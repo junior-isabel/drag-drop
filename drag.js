@@ -1,26 +1,39 @@
 
-function dragElement (selector) {
-  const drag = document.querySelector(selector)
+function dragElement (selector, moveX, moveY) {
+  let _moveX = moveX && true
+  let _moveY = moveY && true 
+  const container = document.querySelector(selector)
+  console.log()
+  let space = null
+  if(!container.children[0].classList.contains('space')) {
+    space = container.children[0]
+    space.classList.add('space')
+  } else {
+    space = container.children[0]
+  }
+  //const drags = container.querySelectorAll('.drag')
   let px = 0, py = 0
   let start = false
   let translateX = 0
   let translateY = 0
   
-  drag.addEventListener('mousedown', clickPoint, false)
   
-  drag.addEventListener('mousemove', movimentEvent, false)
+  container.addEventListener('mousedown', clickPoint, false)
+  
+  container.addEventListener('mousemove', movimentEvent, false)
 
-  drag.addEventListener('mouseup', leavePoint, false)
+  container.addEventListener('mouseup', leavePoint, false)
 
-  drag.addEventListener('mouseleave', leavePoint, false)
+  container.addEventListener('mouseleave', leavePoint, false)
 
-  drag.addEventListener('touchstart', clickPoint, false)
+  container.addEventListener('touchstart', clickPoint, false)
 
-  drag.addEventListener('touchmove', movimentEvent, false)
-  drag.addEventListener('touchend', leavePoint, false)
-  drag.ondrop = (e) => e.preventDefault()
-  drag.ondrag = (e) => e.preventDefault()
-  drag.ondragstart = (e) => e.preventDefault()
+  container.addEventListener('touchmove', movimentEvent, false)
+  container.addEventListener('touchend', leavePoint, false)
+  container.ondrop = (e) => e.preventDefault()
+  container.ondrag = (e) => e.preventDefault()
+  container.ondragstart = (e) => e.preventDefault()
+
   function unif(e) {
     e.preventDefault()
     return e.touches ? e.touches[0] : e
@@ -47,7 +60,8 @@ function dragElement (selector) {
   }
   function translate() {
     
-    drag.style.transform = `translate(${translateX}px, ${translateY}px)`
+    space.style.top = `${translateY}px`
+    space.style.left = `${translateX}px`
   }
   function movimentEvent (e) {
     const event = unif(e)
@@ -55,8 +69,8 @@ function dragElement (selector) {
     let dx = event.clientX - px
     let dy = event.clientY - py
     
-    translateX += dx
-    translateY += dy
+    translateX += _moveX ? dx : 0
+    translateY += _moveY ? dy : 0
     constraint(dx, dy)
     translate()
     px = event.clientX
@@ -64,19 +78,13 @@ function dragElement (selector) {
   }
 
   function constraint(dx, dy) {
-    const element = drag.getBoundingClientRect()
-    translateX = Math.max(0, translateX)
-    if(element.top < 0 ) {
-      translateY -= dy - 1
-    }
-    translateX = translateX + element.width > window.innerWidth ? window.innerWidth - element.width : translateX
+    const spaceBox = space.getBoundingClientRect()
+    const containerBox = container.getBoundingClientRect()
+    translateX = Math.min(0, translateX)
+    translateX = Math.max( - space.scrollWidth + spaceBox.width, translateX)
+
+    translateY = Math.max(0, translateY)
+    translateY = Math.min(containerBox.height - space.scrollHeight, translateY)
   }
 }
-
-
-
-new dragElement('.drag-1')
-new dragElement('.drag-2')
-new dragElement('.drag-3')
-
 

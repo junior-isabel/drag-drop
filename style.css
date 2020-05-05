@@ -3,8 +3,20 @@
     padding: 0;
     box-sizing: border-box;
 }
+.container {
+    border: 1px solid;
+    width: 80%;
+    height: 200px;
+    overflow: hidden;
+}
+.container .space{
+    position: relative;
+    display: flex;
+    flex-wrap: none;
+}
 .drag {
-    width: 200px;
+    display: inline-block;
+    min-width: 200px;
     height: 200px;
     border: .5px solid #ddd;
     background: #fff;
@@ -20,6 +32,9 @@
 }
 .drag:active {
     background: #fafafa;
-    border: 2px dotted #ddd;
     z-index: 1;
+}
+
+.container.swiper {
+    height: 500px;
 }
