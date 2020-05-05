@@ -1,5 +1,5 @@
 {
-  "name": "drag-drop",
+  "name": "code05-drag-drop",
   "version": "1.0.0",
   "description": "drag-drop com javascript, html e css",
   "main": "drag.js",
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/junior-isabel/drag-drop.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "junior isabel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/junior-isabel/drag-drop/issues"
