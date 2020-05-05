@@ -72,6 +72,6 @@
 ----------
 
 # A funcção javascript recebe três paramatros dois deles opcionais
-1. é o wrapper para limitação da área visível dos elementos
+    1. é o wrapper para limitação da área visível dos elementos
 2. receber o valor <strong>true</strong> ou <strong>false</strong> para se mover na coordenada horizontal
 3. receber o valor <strong>true</strong> ou <strong>false</strong> para se mover na coordenada vertical
