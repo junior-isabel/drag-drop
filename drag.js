@@ -92,7 +92,6 @@ function dragElement (selector, moveX, moveY, position) {
     const spaceBox = space.getBoundingClientRect()
     const containerBox = container.getBoundingClientRect()
     const x = containerBox.width - space.scrollWidth - 1
-    console.log(x)
     translateX = Math.min(x > 0 ? x : 0, translateX)
     translateX = Math.max( - space.scrollWidth + spaceBox.width, translateX)
 
